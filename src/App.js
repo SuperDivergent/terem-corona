@@ -1,25 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import "./App.css";
+import Navbar from "./components/framework/Navbar";
+import { Switch, Route, Redirect } from "react-router-dom";
+
+import Landing from "./components/framework/Landing";
+import UserContext from "./dependencies/Context";
+
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      loggedIn: false,
+      userContext: {
+        username: "GuestUser",
+        userKey: "",
+        name: "אורח",
+      },
+    };
+  }
+
+  updateUserContext = (userContext) => {
+    this.setState({
+      userContext: {
+        ...userContext,
+      },
+    });
+  };
+
+  render() {
+    return (
+      <div dir="rtl">
+        <Navbar />
+        <Switch>
+          <Route exact path="/">
+            {this.state.loggedIn ? (
+              <Redirect to="/dashboard" />
+            ) : (
+              <UserContext.Provider value={this.state.userContext}>
+                <Landing updateUser={this.updateUserContext} />
+              </UserContext.Provider>
+            )}
+          </Route>
+        </Switch>
+      </div>
+    );
+  }
 }
-
-export default App;
