@@ -23,9 +23,9 @@ class AppNavbar extends Component {
             <a className="nav-item nav-link active" href="/">
               Home <span className="sr-only">(current)</span>
             </a>
-            <a className="nav-item nav-link" href="/">
+            {/* <a className="nav-item nav-link" as={Link} href={"/WeeklyRequest/" + }>
               Features
-            </a>
+            </a> */}
             <a className="nav-item nav-link" href="/">
               Pricing
             </a>
@@ -40,33 +40,3 @@ class AppNavbar extends Component {
 }
 
 export default AppNavbar;
-
-{
-  /* <Navbar bg="dark" variant="dark" expand="lg" classNameName="mb-4">
-<Navbar.Brand as={Link} to="/">
-  Terem Corona
-</Navbar.Brand>
-<Navbar.Toggle aria-controls="basic-navbar-nav" />
-<Navbar.Collapse id="basic-navbar-nav">
-  <Nav classNameName="mr-auto">
-    <Nav.Link as={Link} to="/logistics">
-      Order Management
-    </Nav.Link>
-    <Nav.Link as={Link} to="/inventory">
-      Inventory
-    </Nav.Link>
-    <Nav.Link as={Link} to="/recipts">
-      Recipts
-    </Nav.Link>
-    <NavDropdown title="Actions">
-      <NavDropdown.Item as={Link} to="/placeOrder">
-        Place Order
-      </NavDropdown.Item>
-      <NavDropdown.Item as={Link} to="/exportExcel">
-        Export Excel
-      </NavDropdown.Item>
-    </NavDropdown>
-  </Nav>
-</Navbar.Collapse>
-</Navbar> */
-}
